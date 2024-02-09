@@ -1,4 +1,4 @@
-# **LISTA DE EXERCÍCIOS 1**
+# **`LISTA DE EXERCÍCIOS 1`** 
 
 ### QUESTÃO 1.
 Faça um programa para ler a base e a altura de um retângulo e mostrar seu perímetro, área e diagonal.
