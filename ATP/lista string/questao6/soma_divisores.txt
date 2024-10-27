@@ -1,0 +1,2 @@
+Número: 35
+Soma dos divisores: 48

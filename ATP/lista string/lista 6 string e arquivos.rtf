@@ -1,0 +1,518 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1046{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang22 QUESTAO 1:\par
+using System;\par
+\par
+class Program\par
+\{\par
+    static void Main(string[] args)\par
+    \{\par
+        Console.WriteLine("Digite uma frase:");\par
+        string frase = Console.ReadLine();\par
+\par
+        int contadorEspacos = ContarEspacos(frase);\par
+\par
+        Console.WriteLine("A frase possui \{0\} espa\'e7o(s) em branco.", contadorEspacos);\par
+    \}\par
+\par
+    static int ContarEspacos(string frase)\par
+    \{\par
+        int contador = 0;\par
+        foreach (char caractere in frase)//verifica se cont\'e9m espa\'e7os em branco na frase\par
+        \{\par
+            if (caractere == ' ')\par
+            \{\par
+                contador++; //se tiver espa\'e7os, incrementa o contador\par
+            \}\par
+        \}\par
+        return contador;\par
+    \}\par
+\}\par
+\par
+QUESTAO 2:\par
+using System;\par
+\par
+class Program\par
+\{\par
+    static void Main(string[] args)\par
+    \{\par
+        Console.WriteLine("Digite uma frase:");\par
+        string frase = Console.ReadLine();\par
+\par
+        string fraseSemVogais = RemoverVogais(frase);\par
+\par
+        Console.WriteLine("Frase sem vogais: \{0\}", fraseSemVogais);\par
+    \}\par
+\par
+    static string RemoverVogais(string frase)\par
+    \{\par
+        string vogais = "aeiouAEIOU";\par
+        string novaFrase = "";\par
+\par
+        foreach (char caractere in frase) //verifica onde est\'e1 as vogais na frase\par
+        \{\par
+            if (!vogais.Contains(caractere))\par
+            \{\par
+                novaFrase += caractere;\par
+            \}\par
+        \}\par
+\par
+        return novaFrase;\par
+    \}\par
+\}\par
+\par
+QUEST\'c3O 3:\par
+using System;\par
+\par
+class Program\par
+\{\par
+    static void Main(string[] args)\par
+    \{\par
+        Console.WriteLine("Digite uma frase:");\par
+        string frase = Console.ReadLine();\par
+\par
+        string fraseCodificada = CodificarCesar(frase, 3);\par
+\par
+        Console.WriteLine($"Frase codificada: \{fraseCodificada\}");\par
+    \}\par
+\par
+    static string CodificarCesar(string frase, int deslocamento)\par
+    \{\par
+        string novaFrase = "";\par
+\par
+        foreach (char caractere in frase)\par
+        \{\par
+            if (char.IsLetter(caractere))\par
+            \{\par
+                char caractereCodificado = (char)(caractere + deslocamento);\par
+\par
+                if (!char.IsLetter(caractereCodificado))\par
+                \{\par
+                    caractereCodificado = (char)(caractereCodificado - 26);\par
+                \}\par
+\par
+                novaFrase += caractereCodificado;\par
+            \}\par
+            else\par
+            \{\par
+                novaFrase += caractere;\par
+            \}\par
+        \}\par
+\par
+        return novaFrase;\par
+    \}\par
+\}\par
+\par
+QUEST\'c3O 4:\par
+using System;\par
+using System.IO;\par
+\par
+class Program\par
+\{\par
+    static void Main(string[] args)\par
+    \{\par
+        Console.WriteLine("Digite o caminho completo do arquivo de texto:");\par
+        string caminhoArquivo = Console.ReadLine();\par
+\par
+        int quantidadeCaracteresA = ContarCaracteresA(caminhoArquivo);\par
+\par
+        Console.WriteLine("Quantidade de caracteres 'a': \{0\}", quantidadeCaracteresA);\par
+    \}\par
+\par
+    static int ContarCaracteresA(string caminhoArquivo)\par
+    \{\par
+        int contador = 0;\par
+\par
+        using (StreamReader reader = new StreamReader(caminhoArquivo))\par
+        \{\par
+            string conteudo = reader.ReadToEnd(); //l\'ea todo o conte\'fado do arquivo\par
+\par
+            foreach (char caractere in conteudo) //verifica cada caractere \par
+            \{\par
+                if (caractere == 'a' || caractere == 'A')\par
+                \{\par
+                    contador++; //conta a quantidade de A's \par
+                \}\par
+            \}\par
+        \}\par
+\par
+        return contador;\par
+    \}\par
+\}\par
+\par
+QUEST\'c3O 5:\par
+using System;\par
+using System.IO;\par
+\par
+class Program\par
+\{\par
+    static void Main(string[] args)\par
+    \{\par
+        Console.WriteLine("Digite o caminho completo do arquivo de texto:");\par
+        string caminhoArquivo = Console.ReadLine();\par
+\par
+        ImprimirConteudoArquivo(caminhoArquivo);\par
+    \}\par
+\par
+    static void ImprimirConteudoArquivo(string caminhoArquivo)\par
+    \{\par
+        try\par
+        \{\par
+            int quantidadeLinhas = 0;\par
+\par
+            using (StreamReader reader = new StreamReader(caminhoArquivo))\par
+            \{\par
+                string linha;\par
+\par
+                while ((linha = reader.ReadLine()) != null)\par
+                \{\par
+                    Console.WriteLine(linha);\par
+                    quantidadeLinhas++; //conta a quantidade de linhas do arquivo\par
+                \}\par
+            \}\par
+\par
+            Console.WriteLine("O arquivo possui \{0\} linha(s).",quantidadeLinhas);\par
+        \}\par
+        catch (FileNotFoundException)\par
+        \{\par
+            Console.WriteLine("Arquivo n\'e3o encontrado.");\par
+        \}\par
+    \}\par
+\}\par
+\par
+QUEST\'c3O 6:\par
+using System;\par
+using System.IO;\par
+\par
+class Program\par
+\{\par
+    static void Main(string[] args)\par
+\{\par
+    Console.WriteLine("Digite um n\'famero inteiro:");\par
+    int numero = int.Parse(Console.ReadLine());\par
+\par
+    int somaDivisores = CalcularDivisores(numero);\par
+\par
+    Console.WriteLine("Divisores:");\par
+    ImprimirDivisores(numero);\par
+\par
+    SalvarSomaDivisores(numero, somaDivisores);\par
+\par
+    Console.WriteLine("Soma dos divisores salva no arquivo.");\par
+\}\par
+\par
+static int CalcularDivisores(int numero)\par
+\{\par
+    int soma = 0;\par
+\par
+    // Percorre todos os n\'fameros de 1 at\'e9 o n\'famero dado\par
+    for (int i = 1; i <= numero; i++)\par
+    \{\par
+        // Verifica se o n\'famero \'e9 divis\'edvel por i\par
+        if (numero % i == 0)\par
+        \{\par
+            // Se for divis\'edvel, adiciona i \'e0 soma dos divisores\par
+            soma += i;\par
+        \}\par
+    \}\par
+\par
+    // Retorna a soma dos divisores\par
+    return soma;\par
+\}\par
+\par
+static void ImprimirDivisores(int numero)\par
+\{\par
+    // Percorre todos os n\'fameros de 1 at\'e9 o n\'famero dado\par
+    for (int i = 1; i <= numero; i++)\par
+    \{\par
+        // Verifica se o n\'famero \'e9 divis\'edvel por i\par
+        if (numero % i == 0)\par
+        \{\par
+            // Se for divis\'edvel, imprime i na tela\par
+            Console.WriteLine(i);\par
+        \}\par
+    \}\par
+\}\par
+\par
+static void SalvarSomaDivisores(int numero, int somaDivisores)\par
+\{\par
+    string nomeArquivo = "soma_divisores.txt";\par
+\par
+    // Cria um objeto StreamWriter para escrever no arquivo\par
+    using (StreamWriter writer = new StreamWriter(nomeArquivo))\par
+    \{\par
+        // Escreve as informa\'e7\'f5es no arquivo\par
+        writer.WriteLine("N\'famero: \{0\}",numero);\par
+        writer.WriteLine("Soma dos divisores: \{0\}",somaDivisores);\par
+    \}\par
+\}\par
+\}\par
+\par
+QUEST\'c3O 7:\par
+using System;\par
+using System.IO;\par
+\par
+class Program\par
+\{\par
+    static void Main()\par
+    \{\par
+        Console.Write("Informe a quantidade de letras (N): ");\par
+        int quantidadeLetras = int.Parse(Console.ReadLine());\par
+\par
+        string letras = ObterLetras(quantidadeLetras);\par
+\par
+        SalvarLetrasEmArquivo(letras);\par
+\par
+        int quantidadeVogais = ContarVogais(letras);\par
+\par
+        Console.WriteLine("Quantidade de vogais no arquivo: " + quantidadeVogais);\par
+    \}\par
+\par
+    static string ObterLetras(int quantidade)\par
+    \{\par
+        string letras = "";\par
+        for (int i = 1; i <= quantidade; i++)\par
+        \{\par
+            Console.Write("Informe a letra #" + i + ": ");\par
+            char letra = Console.ReadLine()[0];\par
+            letras += letra;\par
+        \}\par
+        return letras;\par
+    \}\par
+\par
+    static void SalvarLetrasEmArquivo(string letras)\par
+    \{\par
+        using (StreamWriter writer = new StreamWriter("letras.txt"))\par
+        \{\par
+            writer.WriteLine(letras);\par
+        \}\par
+    \}\par
+\par
+    static int ContarVogais(string letras)\par
+    \{\par
+        int quantidadeVogais = 0;\par
+        foreach (char letra in letras.ToLower())\par
+        \{\par
+            if (letra == 'a' || letra == 'e' || letra == 'i' || letra == 'o' || letra == 'u')\par
+            \{\par
+                quantidadeVogais++;\par
+            \}\par
+        \}\par
+        return quantidadeVogais;\par
+    \}\par
+\}\par
+\par
+QUEST\'c3O 8: \par
+using System;\par
+using System.IO;\par
+\par
+class Program\par
+\{\par
+    static void Main()\par
+    \{\par
+        Console.Write("Informe a quantidade de ve\'edculos da locadora: ");\par
+        int quantidadeVeiculos = int.Parse(Console.ReadLine());\par
+\par
+        Console.Write("Informe o valor do aluguel por ve\'edculo: ");\par
+        double valorAluguel = double.Parse(Console.ReadLine());\par
+\par
+        //chama as fun\'e7\'f5es para fazer os c\'e1lculos\par
+        double faturamentoAnual = CalcularFaturamentoAnual(quantidadeVeiculos, valorAluguel);\par
+        double valorMultasMensal = CalcularValorMultasMensal(quantidadeVeiculos, valorAluguel);\par
+        double valorManutencaoAnual = CalcularValorManutencaoAnual(quantidadeVeiculos); \par
+\par
+        Console.WriteLine("Faturamento Anual: R$" + faturamentoAnual);\par
+        Console.WriteLine("Valor das Multas no M\'eas: R$" + valorMultasMensal);\par
+        Console.WriteLine("Valor da Manuten\'e7\'e3o Anual: R$" + valorManutencaoAnual);\par
+\par
+        GravarResultadoEmArquivo(faturamentoAnual, valorMultasMensal, valorManutencaoAnual);\par
+\par
+        Console.WriteLine("Resultados gravados no arquivo resultado.txt.");\par
+    \}\par
+\par
+    static double CalcularFaturamentoAnual(int quantidadeVeiculos, double valorAluguel) //calcula o faturamento anual\par
+    \{\par
+        int veiculosAlugadosPorMes = quantidadeVeiculos / 3;\par
+        int mesesNoAno = 12;\par
+        return veiculosAlugadosPorMes * valorAluguel * mesesNoAno;\par
+    \}\par
+\par
+    static double CalcularValorMultasMensal(int quantidadeVeiculos, double valorAluguel) //calcula o valor mensal das multas\par
+    \{\par
+        int veiculosDevolvidosAtrasoPorMes = quantidadeVeiculos / 10;\par
+        double percentualMulta = 0.2;\par
+        return veiculosDevolvidosAtrasoPorMes * valorAluguel * percentualMulta;\par
+    \}\par
+\par
+    static double CalcularValorManutencaoAnual(int quantidadeVeiculos) //calcula o valor da manunten\'e7\'e3o anual\par
+    \{\par
+        double percentualManutencao = 0.02;\par
+        double valorManutencaoMedia = 600.00;\par
+        return quantidadeVeiculos * percentualManutencao * valorManutencaoMedia;\par
+    \}\par
+\par
+    static void GravarResultadoEmArquivo(double faturamentoAnual, double valorMultasMensal, double valorManutencaoAnual)\par
+    \{\par
+        using (StreamWriter writer = new StreamWriter("resultado.txt")) //sa\'edda do resultado\par
+        \{\par
+            writer.WriteLine(faturamentoAnual);\par
+            writer.WriteLine(valorMultasMensal);\par
+            writer.WriteLine(valorManutencaoAnual);\par
+        \}\par
+    \}\par
+\}\par
+\par
+QUEST\'c3O 9:\par
+using System;\par
+using System.IO;\par
+\par
+class Program\par
+\{\par
+    static void Main()\par
+    \{\par
+        Console.WriteLine("1 - Inserir dados de alunos");\par
+        Console.WriteLine("2 - Ler dados de alunos");\par
+        Console.WriteLine("0 - Sair");\par
+        Console.WriteLine();\par
+\par
+        int opcao;\par
+        do\par
+        \{\par
+            Console.Write("Escolha uma op\'e7\'e3o: ");\par
+            opcao = int.Parse(Console.ReadLine());\par
+\par
+            switch (opcao)\par
+            \{\par
+                case 1:\par
+                    InserirDadosAlunos();\par
+                    break;\par
+                case 2:\par
+                    LerDadosAlunos();\par
+                    break;\par
+                case 0:\par
+                    Console.WriteLine("Encerrando o programa...");\par
+                    break;\par
+                default:\par
+                    Console.WriteLine("Op\'e7\'e3o inv\'e1lida. Tente novamente.");\par
+                    break;\par
+            \}\par
+\par
+            Console.WriteLine();\par
+        \}\par
+        while (opcao != 0);\par
+    \}\par
+\par
+    static void InserirDadosAlunos()\par
+    \{\par
+        Console.WriteLine("Inserindo dados de alunos...");\par
+        Console.WriteLine();\par
+\par
+        Console.Write("Informe a quantidade de alunos: ");\par
+        int quantidadeAlunos = int.Parse(Console.ReadLine());\par
+\par
+        using (StreamWriter writer = new StreamWriter("dados_alunos.txt", true))\par
+        \{\par
+            for (int i = 1; i <= quantidadeAlunos; i++)\par
+            \{\par
+                Console.Write("Informe a matr\'edcula do aluno #" + i + ": ");\par
+                string matricula = Console.ReadLine();\par
+\par
+                Console.Write("Informe o telefone do aluno #" + i + ": ");\par
+                string telefone = Console.ReadLine();\par
+\par
+                writer.WriteLine(matricula + ";" + telefone);\par
+            \}\par
+        \}\par
+\par
+        Console.WriteLine("Dados de alunos inseridos com sucesso!");\par
+    \}\par
+\par
+    static void LerDadosAlunos()\par
+    \{\par
+        Console.WriteLine("Lendo dados de alunos...");\par
+        Console.WriteLine();\par
+\par
+        if (File.Exists("dados_alunos.txt"))\par
+        \{\par
+            using (StreamReader reader = new StreamReader("dados_alunos.txt"))\par
+            \{\par
+                string linha;\par
+                while ((linha = reader.ReadLine()) != null)\par
+                \{\par
+                    string[] dados = linha.Split(';');\par
+                    string matricula = dados[0];\par
+                    string telefone = dados[1];\par
+\par
+                    Console.WriteLine("Matr\'edcula: " + matricula);\par
+                    Console.WriteLine("Telefone: " + telefone);\par
+                    Console.WriteLine();\par
+                \}\par
+            \}\par
+        \}\par
+        else\par
+        \{\par
+            Console.WriteLine("Nenhum dado de aluno encontrado.");\par
+        \}\par
+    \}\par
+\}\par
+\par
+QUEST\'c3O 10:\par
+using System;\par
+using System.IO;\par
+\par
+class Program\par
+\{\par
+    static void Main()\par
+    \{\par
+        string nomeArquivo = "arquivo.txt"; // Nome do arquivo a ser lido\par
+\par
+        // Verifica se o arquivo existe\par
+        if (!File.Exists(nomeArquivo))\par
+        \{\par
+            Console.WriteLine("O arquivo n\'e3o existe.");\par
+            return;\par
+        \}\par
+\par
+        string[] linhas = File.ReadAllLines(nomeArquivo); // L\'ea todas as linhas do arquivo\par
+        int quantidadeValores = linhas.Length;\par
+\par
+        // Verifica se o arquivo est\'e1 vazio\par
+        if (quantidadeValores == 0)\par
+        \{\par
+            Console.WriteLine("O arquivo est\'e1 vazio.");\par
+            return;\par
+        \}\par
+\par
+        double valorMaximo = double.MinValue;\par
+        double valorMinimo = double.MaxValue;\par
+        double somaValores = 0;\par
+\par
+        // Percorre todas as linhas do arquivo\par
+        foreach (string linha in linhas)\par
+        \{\par
+            if (double.TryParse(linha, out double valor))\par
+            \{\par
+                // Atualiza o valor m\'e1ximo\par
+                if (valor > valorMaximo)\par
+                    valorMaximo = valor;\par
+\par
+                // Atualiza o valor m\'ednimo\par
+                if (valor < valorMinimo)\par
+                    valorMinimo = valor;\par
+\par
+                // Soma os valores\par
+                somaValores += valor;\par
+            \}\par
+        \}\par
+\par
+        double media = somaValores / quantidadeValores;\par
+\par
+        // Imprime os resultados\par
+        Console.WriteLine("Valor m\'e1ximo: " + valorMaximo);\par
+        Console.WriteLine("Valor m\'ednimo: " + valorMinimo);\par
+        Console.WriteLine("M\'e9dia: " + media);\par
+    \}\par
+\}\par
+\par
+}
+ 
