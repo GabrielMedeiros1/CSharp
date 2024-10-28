@@ -1,0 +1,11 @@
+Primeira linha do arquivo pub.in deve informar a quantidade de personagens que serão listados com suas devidas características:
+Nome, Altura, Peso, Cor do cabelo, Cor da pele, Cor dos olhos, Ano de Nascimento, Genero, Homeworld.
+
+Após entrar com todos esses dados, o usuário deverá digitar a quantidade de pesquisas que serão realizadas.
+Exemplo:
+4
+altura 178 180
+peso 60 180
+genero female
+homeworld Tatooine
+ 
